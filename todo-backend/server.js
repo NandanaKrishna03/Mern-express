@@ -3,6 +3,7 @@ const app = express()
 var cors=require('cors')
 const allowedOrigins = process.env.NODE_ENV === 'production'
   ? 'https://your-frontend-site.onrender.com' 
+    : 'http://localhost:5173';
 
 app.use(cors({ origin: allowedOrigins }));
 
