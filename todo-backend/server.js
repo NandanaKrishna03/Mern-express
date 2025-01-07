@@ -1,9 +1,12 @@
 const express = require('express')
 const app = express()
 var cors=require('cors')
-app.use(cors({
-    origin:'http://localhost:5173'
-}))
+const allowedOrigins = process.env.NODE_ENV === 'production'
+  ? 'https://your-frontend-site.onrender.com' // Replace with your actual frontend URL
+  : 'http://localhost:5173';
+
+app.use(cors({ origin: allowedOrigins }));
+
 
 
 const mongoose = require('mongoose');
