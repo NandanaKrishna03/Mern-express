@@ -2,8 +2,7 @@ const express = require('express')
 const app = express()
 var cors=require('cors')
 const allowedOrigins = process.env.NODE_ENV === 'production'
-  ? 'https://your-frontend-site.onrender.com' // Replace with your actual frontend URL
-  : 'http://localhost:5173';
+  ? 'https://your-frontend-site.onrender.com' 
 
 app.use(cors({ origin: allowedOrigins }));
 
