@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 var cors=require('cors')
 const allowedOrigins = process.env.NODE_ENV === 'production'
-  ? https://mern-express-front.onrender.com
+  ? 'https://mern-express-front.onrender.com'
     : 'http://localhost:5173';
 
 app.use(cors({ origin: allowedOrigins }));
