@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import "./App.css"
 function App() {
     const [tasks, setTasks] = useState([]);
     const [taskInput, setTaskInput] = useState("");
@@ -53,11 +53,11 @@ function App() {
     };
 
     return (
-        <div>
+        <div className='todolisting'>
         <h2>{count}</h2>
             <h1>Todo</h1>
             <form onSubmit={handleAddTask}>
-                <input
+               <input className='todo-name'
                     type='text'
                     placeholder='Enter task'
                     value={taskInput}
@@ -65,7 +65,7 @@ function App() {
                 />
                 <input type='submit' value="Add Task" />
             </form>
-            <ul>
+            <ul className='ordered-list'>
                 {tasks.map((task) => (
                     <li key={task._id}>
                         {editTaskId === task._id ? (

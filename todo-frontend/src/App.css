@@ -1,0 +1,26 @@
+.todolisting{
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #007BFF; /* Adds a blue border */
+    border-radius: 8px; /* Rounds the corners */
+    background-color: #f9f9f9; /* Optional: Light background color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow for a modern look */
+    text-align: center;
+}
+.ordered-list{
+    list-style-position: inside; /* Moves the bullet inside the list item */
+    padding-left: 0; /* Removes the default padding */
+    text-align: center; /* Centers the text and bullets */
+}
+.ordered-list li {
+    display: flex; /* Use flexbox for better control of alignment and spacing */
+    align-items: center; /* Align items vertically in the center */
+    margin-left: 120px;
+    gap: 5px; /* Add spacing between task text and buttons */
+    color: #5c29eb;
+}
+h1{
+    font-family: cursive;
+} 
+
