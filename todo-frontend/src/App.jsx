@@ -1,17 +1,22 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import "./App.css"
+import "./App.css";
+
 function App() {
     const [tasks, setTasks] = useState([]);
     const [taskInput, setTaskInput] = useState("");
     const [editTaskId, setEditTaskId] = useState(null);
     const [editTaskInput, setEditTaskInput] = useState("");
     const [count, setCount] = useState(0);
+
+  
+    const baseURL = "https://mern-express.onrender.com";
+
     const getTasks = () => {
-        axios.get("http://localhost:3007")
+        axios.get(`${baseURL}/`)
             .then(res => {
-                setTasks(res.data.taskItems)
-                setCount(res.data.count)
+                setTasks(res.data.taskItems);
+                setCount(res.data.count);
             })
             .catch(err => console.error("Error fetching tasks:", err));
     };
@@ -22,7 +27,7 @@ function App() {
 
     const handleAddTask = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:3007", { task: taskInput })
+        axios.post(`${baseURL}/`, { task: taskInput })
             .then(() => {
                 setTaskInput("");
                 getTasks();
@@ -31,9 +36,9 @@ function App() {
     };
 
     const handleDeleteTask = (id) => {
-        axios.delete(`http://localhost:3007/task/${id}`)
+        axios.delete(`${baseURL}/task/${id}`)
             .then(() => getTasks())
-            .catch(err => alert(err.response.data.message));
+            .catch(err => alert(err.response?.data?.message || "Error deleting task"));
     };
 
     const handleEditTask = (task) => {
@@ -43,7 +48,7 @@ function App() {
 
     const handleUpdateTask = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:3007/task/${editTaskId}`, { task: editTaskInput })
+        axios.put(`${baseURL}/task/${editTaskId}`, { task: editTaskInput })
             .then(() => {
                 setEditTaskId(null);
                 setEditTaskInput("");
@@ -54,10 +59,11 @@ function App() {
 
     return (
         <div className='todolisting'>
-        <h2>{count}</h2>
+            <h2>{count}</h2>
             <h1>Todo</h1>
             <form onSubmit={handleAddTask}>
-               <input className='todo-name'
+                <input
+                    className='todo-name'
                     type='text'
                     placeholder='Enter task'
                     value={taskInput}
